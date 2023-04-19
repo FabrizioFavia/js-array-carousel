@@ -6,9 +6,7 @@ let slideElements = document.getElementsByClassName("slide")
 let slideArray = ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"];
 let currentSlide = 0;
 
-
 for (let i = 0; i < slideArray.length; i++) {
-
 
     if (i == 0) {
         let x = document.createElement("img");
@@ -25,30 +23,39 @@ for (let i = 0; i < slideArray.length; i++) {
 
 nextBtn.addEventListener("click", function () {
 
-    for (let i = 0; i < slideElements.length; i++) {
-        const slide = slideElements[i];
+    if (currentSlide < 4) {
 
-        if (i == currentSlide + 1) {
-            slide.classList.remove("hidden");
-        } else {
-            slide.classList.add("hidden");
+
+        for (let i = 0; i < slideElements.length; i++) {
+            const element = slideElements[i];
+
+            if (i == currentSlide + 1) {
+                element.classList.remove("hidden");
+            } else {
+                element.classList.add("hidden");
+            }
         }
+        currentSlide++
+    
     }
-    currentSlide++;
+
 });
 
 backBtn.addEventListener("click", function () {
 
+    if(currentSlide>0){
     for (let i = 0; i < slideElements.length; i++) {
-        const slide = slideElements[i];
+        const element = slideElements[i];
 
         if (i == currentSlide - 1) {
-            slide.classList.remove("hidden");
+            element.classList.remove("hidden");
         } else {
-            slide.classList.add("hidden");
+            element.classList.add("hidden");
         }
     }
     currentSlide--;
+} 
+
 });
 
 
